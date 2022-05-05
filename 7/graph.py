@@ -13,7 +13,7 @@ data_array = v_max * data_array / 2**8
 time = np.linspace(0, dt * (len(data_array) - 1), len(data_array))
 
 fig, ax = plt.subplots(figsize=(16, 10), dpi=400)
-ax.plot(time, data_array, label='V(t)', color='pink', linewidth=3) 
+ax.plot(time, data_array, label='V(t)', color='pink', linewidth=3, markevery = 40, marker = 'o', markerfacecolor = 'red') 
 ax.set_ylabel("Напряжение, В")
 ax.set_xlabel("Время, c")
 wrap = tw.wrap("Процесс заряда и разряда конденсатора в RC-цепочке", width = 20)
@@ -38,8 +38,9 @@ ax.grid(which='minor',
 
 
 yMax = np.max(data_array)
-ax.set_xlim([0, dt * (len(data_array) - 1)])
-ax.set_ylim([0, yMax + 0.5])
+print(round ((dt * (len(data_array) - 1)),0))
+ax.set_xlim([0, round ((dt * (len(data_array) - 1)),0)])
+ax.set_ylim([0, int(yMax) + 0.5])
 
 vMax = np.argmax(data_array)
 t1 = time[vMax]
